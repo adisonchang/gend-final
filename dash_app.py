@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
-
-# Run this app with `python app.py` and
-# visit http://127.0.0.1:8050/ in your web browser.
+# Author: Adison Chang
+# Download the project folder and execute data.py, then dash_app.py
+# and visit http://127.0.0.1:8050/ in your web browser to see the local webpage
 
 import dash
 import dash_core_components as dcc
@@ -12,6 +11,7 @@ from datetime import datetime
 
 import tab1, tab2, tab3, tab4, tab5, tab6
 
+# Set some universal design variables
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 colors = {
     'background': 'white',
@@ -22,6 +22,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 td = datetime.today()
 
+# Set the layout of the web app
 app.layout = html.Div(children=[
     html.Br(),
     html.Br(),
@@ -64,6 +65,7 @@ app.layout = html.Div(children=[
 ], style={'backgroundColor': colors['background']})
 
 
+# Set the callbacks for tab functionality
 @app.callback(Output('tabs-content', 'children'),
               [Input('tabs', 'value')])
 def render_content(tab):
