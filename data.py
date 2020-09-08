@@ -9,6 +9,7 @@ import pandas as pd
 import psycopg2
 
 
+# Connect to GenData database
 conn = psycopg2.connect(
     host="generationdata.c9g5wowukaqz.us-east-1.rds.amazonaws.com",
     database="generationdata",
@@ -111,5 +112,6 @@ cur.execute(
 col = ['County', 'Applied', 'Issued', 'PercentIssued']
 problem_county = pd.DataFrame(data=cur.fetchall(), columns=col)
 
+# Close connections
 cur.close()
 conn.close()
