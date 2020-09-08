@@ -1,3 +1,7 @@
+# tab4.py builds two scatter plots for 
+# counties by # Democratic ballots 
+# Issued and Returned
+
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
@@ -5,6 +9,11 @@ import plotly.express as px
 from data import dem_mail_county
 from dash_app import colors
 
+# Initialize Plotly Scatterplot
+# Each county is a different bubble, and they are 
+# Color-coded based on how many votes are remaining
+# X-axis is log(Democratic Ballots Issued) and
+# Y-axis is log(Democratic Ballots Returned)
 fig = px.scatter(dem_mail_county, x="Issued", y="Returned",
                  opacity=0.7,
                  hover_name="County",
@@ -24,6 +33,11 @@ fig.update_layout(
     legend_title_font_color="green"
 )
 
+# Initialize Plotly Scatterplot
+# Each county is a different bubble, and they are 
+# Color-coded based on how many votes are remaining
+# X-axis is Democratic Ballots Issued and
+# Y-axis is Democratic Ballots Returned
 fig2 = px.scatter(dem_mail_county, x="Issued", y="Returned",
                   opacity=0.7,
                   hover_name="County",
@@ -35,6 +49,7 @@ fig2.update_traces(marker=dict(size=12,
                    selector=dict(mode='markers'))
 
 
+# Finalize tab layout 
 layout = html.Div(children=[
     html.Br(),
     html.H2(children='''Counties by Democratic Ballots Issued
