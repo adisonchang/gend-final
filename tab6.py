@@ -1,9 +1,18 @@
+# tab6 presents a ranked list of 
+# counties based on the number of 
+# ballots that have been applied for 
+# but have not been issued.
+# the counties at the top of the list 
+# have issued 0 ballots for a positive 
+# number of applications.
+
 import plotly.graph_objects as go
 import dash_html_components as html
 import dash_core_components as dcc
 
 from data import problem_county
 
+# initialize ploty table
 fig = go.Figure(data=[go.Table(
     header=dict(values=list(problem_county.columns),
                 fill_color='paleturquoise',
@@ -18,6 +27,7 @@ fig = go.Figure(data=[go.Table(
 
 fig.update_layout(height=600)
 
+# finalize tab layout 
 layout = html.Div(children=[
     html.Br(),
     html.H2(children='Problem Counties',
